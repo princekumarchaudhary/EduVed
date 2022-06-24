@@ -1,0 +1,67 @@
+{% extends 'hod_template/base.html' %}
+{% block page_title %}Home{% endblock page_title%}
+{% block main_content %}
+    <section class="content">
+      <div class="container-fluid"></div>
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ student_count }}</h3>
+
+                <p>Total Students</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+                {% url 'manage_student' as manage_student %}
+              <a href="{{ manage_student }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ staff_count }}</h3>
+
+                <p>Total Staff</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+                {% url 'manage_staff' as manage_staff %}
+              <a href="{{ manage_staff }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ course_count  }}</h3>
+
+                <p> Total Course</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              {% url 'manage_course' as manage_course %}
+              <a href="{{ manage_course }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ subject_count  }}</h3>
+
+                <p> Total Subject</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              {% url 'manage_subject' as manage_subject %}
+              <a href="{{ manage_subject }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+    </section>
+
+{% endblock main_content %}

@@ -1,0 +1,95 @@
+{% extends 'staff_template/base.html' %}
+{% block page_title %}Edit Student | Username : {{student.admin.username}} | #ID : {{student.admin.id}}{% endblock page_title%}
+{% block main_content %}
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit Student</h3>
+                    </div>
+
+                    <form role="form" method="POST" action="/edit_student_save_staff" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Email address</label>
+                                <input type="email" class="form-control" name="email" placeholder="Enter email" id="id_email" value="{{student.admin.email}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="username" placeholder="Username" id="id_username" value="{{student.admin.username}}">
+                                <input type="hidden" name="student_id"  value="{{student.admin.id}}">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{student.admin.first_name}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{student.admin.last_name }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea class="form-control" name="address" placeholder="Address" value="{{student.address}}"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Course</label>
+                                <select  class="form-control"  name="course">
+                                    {% for course in courses %}
+                                    <option value="{{course.id}}" {% if course.id == student.course_id.id %} selected {% endif %}>{{course.course_name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select  class="form-control"  name="sex">
+                                    <option {% if student.gender == "Male" %} selected {% endif %}>Male</option>
+                                    <option {% if student.gender == "Female" %} selected {% endif %}>Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Profile Image</label>
+                                <input type="file" class="form-control" name="profile_pic" >
+                            </div>
+                            <div class="form-group">
+                                {% if messages %}
+                                {% for message in messages %}
+                                {% if message.tags == 'error' %}
+                                 <div class="alert alert-danger" style="margin-top:10px">{{message}}</div>
+                                {% endif %}
+                                 {% if message.tags == 'success' %}
+                                 <div class="alert alert-success" style="margin-top:10px">{{message}}</div>
+                                {% endif %}
+                                {% endfor %}
+
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+                        <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Update Student</button>
+                        </div>
+                    </form>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+      </section>
+
+{% endblock main_content %}

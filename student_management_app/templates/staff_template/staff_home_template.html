@@ -1,0 +1,51 @@
+{% extends 'staff_template/base.html' %}
+{% block page_title %}Home{% endblock page_title%}
+{% block main_content %}
+    <section class="content">
+      <div class="container-fluid"></div>
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ students_count }}</h3>
+
+                <p>Students Under Me</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+                {% url 'add_student_staff' as add_student_staff %}
+              <a href="{{ add_student_staff }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ attendance_count }}</h3>
+
+                <p>Total Attendance Taken</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+                {% url 'staff_taken_attendance' as staff_taken_attendance %}
+              <a href="{{ staff_taken_attendance }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ subject_count  }}</h3>
+
+                <p> Total Subjects</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">&nbsp;</a>
+            </div>
+          </div>
+        </div>
+    </section>
+
+{% endblock main_content %}
